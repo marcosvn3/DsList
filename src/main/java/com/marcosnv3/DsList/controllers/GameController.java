@@ -3,7 +3,6 @@ package com.marcosnv3.DsList.controllers;
 
 import com.marcosnv3.DsList.dto.GameDTO;
 import com.marcosnv3.DsList.dto.GameMinDTO;
-import com.marcosnv3.DsList.entities.Game;
 import com.marcosnv3.DsList.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

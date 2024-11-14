@@ -3,6 +3,9 @@ package com.marcosnv3.DsList.dto;
 import com.marcosnv3.DsList.entities.Game;
 import org.springframework.beans.BeanUtils;
 
+/**
+ * DTO para representação de jogos.
+ */
 public class GameDTO {
 
     private Long id;
@@ -15,12 +18,17 @@ public class GameDTO {
     private String shortDescription;
     private String longDescription;
 
-
+    /**
+     * Construtor padrão.
+     */
     public GameDTO(){
     }
 
+    /**
+     * Construtor que recebe uma entidade Game e copia suas propriedades para o DTO.
+     * @param game Entidade Game a ser convertida.
+     */
     public GameDTO(Game game){
-        //copia tudo da entidade original para o DTO
         BeanUtils.copyProperties(game, this);
     }
 

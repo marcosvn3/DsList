@@ -10,12 +10,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Classe de serviço para a entidade GameList.
+ */
 @Service
 public class GameListService {
 
     @Autowired
     private GameListRepository gameListRepository;
 
+    /**
+     * Método que retorna todas as listas de jogos.
+     * @return Lista de todas as listas de jogos.
+     */
     @Transactional(readOnly = true)
     public List<GameListDTO> findAll() {
         List<GameList> result = gameListRepository.findAll();
