@@ -20,7 +20,7 @@ public interface GameMinProjection {
      * Getter para o ano de lançamento do jogo.
      * @return O ano de lançamento do jogo.
      */
-    Integer getYear();
+    Integer getGameYear();
 
     /**
      * Getter para a URL da imagem do jogo.
