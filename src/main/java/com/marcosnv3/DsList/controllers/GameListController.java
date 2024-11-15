@@ -6,14 +6,11 @@ package com.marcosnv3.DsList.controllers;
  * @author Marcos Santos
  */
 import com.marcosnv3.DsList.dto.GameListDTO;
-import com.marcosnv3.DsList.dto.GameMinDTO;
+import com.marcosnv3.DsList.dto.ReplacementDTO;
 import com.marcosnv3.DsList.services.GameListService;
 import com.marcosnv3.DsList.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,39 +21,26 @@ import java.util.List;
 @RequestMapping(value = "/lists")
 public class GameListController {
 
-    /**
-     * Injeção de dependência do serviço de listas de jogos.
-     */
     @Autowired
     private GameListService gameListService;
 
-    /**
-     * Injeção de dependência do serviço de jogos.
-     */
     @Autowired
     private GameService gameService;
 
-    /**
-     * Método que lista todas as listas de jogos.
-     * 
-     * @return Lista de DTOs de listas de jogos.
-     */
+    @GetMapping(value = "/{id}")
+    public GameListDTO findById(@PathVariable Long id) {
+        GameListDTO result = gameListService.findById(id);
+        return result;
+    }
+
     @GetMapping
-    public List<GameListDTO> findAll(){
+    public List<GameListDTO> findAll() {
         List<GameListDTO> result = gameListService.findAll();
         return result;
     }
 
-    /**
-     * Método que busca jogos por uma lista específica.
-     * 
-     * @param listId O ID da lista a ser buscada.
-     * @return Lista de DTOs de jogos mínimos.
-     */
-    @GetMapping(value = "/{listId}/games")
-    public List<GameMinDTO> findByList(@PathVariable Long listId){
-        List<GameMinDTO> result = gameService.findByList(listId);
-        return result;
+    @PostMapping(value = "/{listId}/replacement")
+    public void move(@PathVariable Long listId, @RequestBody ReplacementDTO body) {
+        gameListService.move(listId, body.getSourceIndex(), body.getDestinationIndex());
     }
-
 }
