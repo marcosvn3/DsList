@@ -1,5 +1,4 @@
 # API de Lista de Jogos:
-Descrição
 Este projeto consiste em uma API para gerenciar uma lista de jogos, onde é possível visualizar jogos de acordo com seu tipo (plataforma ou RPG) e reordenar os jogos na lista.
 
 # Tecnologias Utilizadas
